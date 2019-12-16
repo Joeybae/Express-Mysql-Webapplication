@@ -9,6 +9,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//session & cookie
+const session = require('express-session');
+
 //DB 연결
 const models = require("./models/index.js");
 
@@ -48,5 +51,16 @@ models.sequelize.sync().then( () => {
   console.log("연결 실패");
   console.log(err);
 });
+
+//session & cookie login 유지
+app.use(session({
+  key: 'sid',
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+  }
+}));
 
 module.exports = app;
