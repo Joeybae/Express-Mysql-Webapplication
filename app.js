@@ -28,6 +28,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//session & cookie login 유지
+app.use(session({
+  key: 'sid',
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+  }
+}));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -51,16 +62,5 @@ models.sequelize.sync().then( () => {
   console.log("연결 실패");
   console.log(err);
 });
-
-//session & cookie login 유지
-app.use(session({
-  key: 'sid',
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
-  }
-}));
 
 module.exports = app;
