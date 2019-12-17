@@ -11,6 +11,16 @@ var app = express();
 
 //session & cookie
 const session = require('express-session');
+//session & cookie login 유지
+app.use(session({
+  key: 'sid',
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+  }
+}));
 
 //DB 연결
 const models = require("./models/index.js");
@@ -27,17 +37,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-//session & cookie login 유지
-app.use(session({
-  key: 'sid',
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
-  }
-}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
