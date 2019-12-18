@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const models = require("../models");
 const crypto = require("crypto");
-const session = require('express-session');
 
 // 회원가입 GET
 router.get('/sign_up', function(req, res, next) {
@@ -65,21 +64,12 @@ router.post("/login", async function(req,res,next){
     console.log("비밀번호 일치");
     // 세션 설정
     req.session.email = body.userEmail;
-    res.redirect("/users/mypage");
+    res.redirect("/users/login");
   }
   else{
     console.log("비밀번호 불일치");
     res.redirect("/users/login");
   }
-});
-
-// 로그인 GET
-router.get('/mypage', function(req, res, next) {
-  let session = req.session;
-
-  res.render("user/mypage", {
-    session : session
-  });
 });
 
 // 로그아웃
