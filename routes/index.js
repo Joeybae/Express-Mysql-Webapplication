@@ -16,20 +16,20 @@ router.get('/board', function(req, res, next) {
   });
 });
 
-//특정 인자만 불러오기
-router.get('/board', function(req, res, next) {
-  models.post.findAll({
-    where: {writer: "victolee"}
-  })
-  .then( result => {
-    res.render("show", {
-      posts: result
-    });
-  })
-  .catch(function(err){
-    console.log(err);
-  });
-});
+// //특정 인자만 불러오기
+// router.get('/board', function(req, res, next) {
+//   models.post.findAll({
+//     where: {writer: "victolee"}
+//   })
+//   .then( result => {
+//     res.render("show", {
+//       posts: result
+//     });
+//   })
+//   .catch(function(err){
+//     console.log(err);
+//   });
+// });
 
 // insert
 router.post('/board', function(req, res, next) {
@@ -49,7 +49,7 @@ router.post('/board', function(req, res, next) {
 });
 
 //update할 정보
-router.get('/edit/:id', function(req, res, next) {
+router.get('/board/:id', function(req, res, next) {
   let postID = req.params.id;
 
   models.post.findOne({

@@ -106,3 +106,15 @@
   
   ![다운로드 (1)](https://user-images.githubusercontent.com/45925992/70890912-7fe9d400-2029-11ea-890f-580debd13672.png)
   
+----------------------------------------
+
+# 12.18일 추가 내용
+
+  - veiws/ show, edit 추가
+  - insert, query, update, delete 기능 추가
+  - method-override 설치 및 사용
+  - posts table 생성
+  
+# 12.18일 발생한 error
+
+  - edit 페이지로 이동 시 error발생
