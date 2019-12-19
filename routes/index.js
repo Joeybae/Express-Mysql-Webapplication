@@ -4,7 +4,11 @@ const models = require('../models');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  let session = req.session;
+
+  res.render("user/login", {
+    session : session
+  });
 });
 
 // 게시글 목록

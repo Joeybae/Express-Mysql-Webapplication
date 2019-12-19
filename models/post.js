@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
 
   post.associate = function (models) {
     post.hasMany(models.reply);
+    // reply.belongsTo(models.post, {
+    //   foreignKey: "email"
+    // })
   };
 
   return post;

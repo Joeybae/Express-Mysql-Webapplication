@@ -22,5 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  // post.associate = function (models) {
+  //   post.hasMany(models.post);
+  // };
+
   return user;
 };
