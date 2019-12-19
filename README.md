@@ -118,3 +118,7 @@
 # 12.18일 발생한 error
 
   - edit 페이지로 이동 시 error발생
+  
+# 12.19 추가 내용
+  
+  - edit 페이지 이동 시 error 발생 문제 해결 (routes/index.js 52번째 줄 '/edit/:id' -> '/board/:id'로 변경)
