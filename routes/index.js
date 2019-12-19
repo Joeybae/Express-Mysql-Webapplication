@@ -31,7 +31,7 @@ router.get('/board', function(req, res, next) {
 //   });
 // });
 
-// insert
+//게시글 작성
 router.post('/board', function(req, res, next) {
   let body = req.body;
 
@@ -48,7 +48,7 @@ router.post('/board', function(req, res, next) {
   })
 });
 
-//update할 정보
+//게시글 조회
 router.get('/board/:id', function(req, res, next) {
   let postID = req.params.id;
 
@@ -65,7 +65,7 @@ router.get('/board/:id', function(req, res, next) {
   });
 });
 
-//edit
+//게시글 수정
 router.put('/board/:id', function(req, res, next) {
   let postID = req.params.id;
   let body = req.body;
@@ -97,6 +97,24 @@ router.delete('/board/:id', function(req, res, next) {
   })
   .catch( err => {
     console.log("데이터 삭제 실패");
+  });
+});
+
+// 댓글 등록
+router.post("/reply/:postID", function(req, res, next){
+  let postID = req.params.postID;
+  let body = req.body;
+
+  models.reply.create({
+    postId: postID,
+    writer: body.replyWriter,
+    content: body.replyContent
+  })
+  .then( results => {
+    res.redirect("/board");
+  })
+  .catch( err => {
+    console.log(err);
   });
 });
 

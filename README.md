@@ -122,3 +122,5 @@
 # 12.19 추가 내용
   
   - edit 페이지 이동 시 error 발생 문제 해결 (routes/index.js 52번째 줄 '/edit/:id' -> '/board/:id'로 변경)
+  - reply table 생성하는 logic 추가 (# sequelize model:create --name reply --attributes "postId:integer, writer:string, content:text")
+  - post와 reply 1:M 관계 설정
