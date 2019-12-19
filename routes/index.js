@@ -7,12 +7,26 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-//query
-router.get('/board', function(req, res, next) {
-  models.post.findAll().then( result => {
-    res.render("show", {
-      posts: result
-    });
+// 게시글 목록
+router.get('/board', async function(req, res, next) {
+  let result = await models.post.findAll();
+  if (result){
+    for(let post of result){
+      let result2 = await models.post.findOne({
+        include: {
+          model: models.reply,
+          where: {
+            postId: post.id
+          }
+        }
+      })
+      if(result2){
+        post.replies = result2.replies
+      }
+    } 
+  }
+  res.render("show", {
+    posts : result
   });
 });
 
