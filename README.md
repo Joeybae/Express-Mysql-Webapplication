@@ -126,3 +126,7 @@
   - post와 reply 1:M 관계 설정 (models/post.js and reply.js)
   - 댓글 기능 추가(routes/index.js)
   - 댓글 뷰 추가(views/show.ejs)
+  
+# 12.20 추가 내용
+
+  - 뷰 순서 변경 (시작 -> login -> board)
