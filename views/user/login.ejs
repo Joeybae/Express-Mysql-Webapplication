@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
 </head>
 <body>
 
@@ -14,22 +15,22 @@
     <button type="button" onclick="location.href='/board'">게시판 가기</button>
 
 <% } else{ %>
+<div class="login-form">
     <h3>로그인</h3>
     <form action="/users/login" method="post">
         <table>
             <tr>
-                <td>이메일 : </td>
-                <td><input type="text" name="userEmail"></td>
+                <td><input type="text" name="userEmail" placeholder="Email"></td>
             </tr>
             <tr>
-                <td>비번 : </td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" name="password" placeholder="Password"></td>
             </tr>
             <tr>
                 <td><input type="submit" value="로그인"></td>
             </tr>
         </table>
     </form>
+</div>
 <% } %>
 
 </body>

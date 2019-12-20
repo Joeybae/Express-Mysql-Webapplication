@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 
 // 게시글 목록
 router.get('/board', async function(req, res, next) {
+  let session = req.session;
   let result = await models.post.findAll();
   if (result){
     for(let post of result){
@@ -30,6 +31,7 @@ router.get('/board', async function(req, res, next) {
     } 
   }
   res.render("show", {
+    session : session,
     posts : result
   });
 });
